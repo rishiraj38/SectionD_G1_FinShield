@@ -61,38 +61,22 @@ Converted encoded categorical values into meaningful real-world labels for bette
   - crif → crif
   - equi → equifax
 
----
-
-## Step 2: Outlier Handling
-- Applied IQR method on selected numerical columns:
-  - income
-  - credit_score
-  - ltv
-
-- Note:
-  - `loan_amount` was intentionally NOT modified to preserve its distribution for analysis and visualization purposes.
 
 ---
 
-##  Step 3: Feature Engineering
-Created new features to enhance analytical insights:
+##  Step 2: Feature Engineering
+Feature Engineering Summary
 
-- income_to_loan_ratio:
-  - Measures financial strength of applicant
+We have performed the following feature engineering steps:
 
-- emi_estimate:
-  - Estimated monthly loan repayment
-
-- emi_income_ratio:
-  - Measures affordability of loan repayment
-
-- Additional Handling:
-  - Managed division errors (infinite values)
-  - Replaced invalid values with 0 to maintain dataset consistency
+*   **`ltv_risk_bucket`**: Created a categorical variable based on `ltv` (loan-to-value) to classify loans into 'Low', 'Moderate', 'High', and 'Very High' risk buckets.
+*   **`credit_score_bucket`**: Created a categorical variable based on `credit_score` to classify applicants into 'Poor', 'Fair', 'Good', 'Very Good', and 'Excellent' credit score buckets.
+*   **Column Renaming**: Renamed the column `dtir1` to `debt_to_income_ratio` for better clarity and understanding.
+*   **Column Removal**: Removed the redundant columns `security_type` and `secured_by` as they were not adding significant value to the dataset.
 
 ---
 
-## Step 4: Final Validation
+## Step 3: Final Validation
 - Verified:
   - Data types
   - Missing values
