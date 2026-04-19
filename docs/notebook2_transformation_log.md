@@ -1,20 +1,43 @@
 #  Notebook 02 – Data Transformation & Feature Engineering Log
 
-##  Input Dataset
+## Input Dataset
 - Source: loan_stage1_cleaned.csv
 
 ---
 
 ##  Step 1: Categorical Value Transformation
-Converted encoded values into meaningful labels:
+Converted encoded categorical values into meaningful real-world labels for better interpretability:
 
 - loan_limit:
-  - cf → conforming
-  - ncf → non_conforming
+  - cf → conforming loan
+  - ncf → non-conforming loan
 
 - approv_in_adv:
-  - nopre → no_preapproval
-  - pre → preapproved
+  - nopre → no pre-approval
+  - pre → pre-approved
+
+- loan_type:
+  - type1 → home loan
+  - type2 → personal loan
+  - type3 → commercial loan
+
+- loan_purpose:
+  - p1 → home purchase
+  - p2 → home improvement
+  - p3 → debt consolidation
+  - p4 → business purpose
+
+- credit_worthiness:
+  - l1 → high creditworthy
+  - l2 → medium creditworthy
+
+- open_credit:
+  - nopc → no open credit
+  - opc → open credit line
+
+- business_or_commercial:
+  - b/c → business use
+  - nob/c → personal use
 
 - neg_ammortization:
   - not_neg → no
@@ -24,42 +47,57 @@ Converted encoded values into meaningful labels:
   - not_int → no
   - int_only → yes
 
-- business_or_commercial:
-  - b/c → business
-  - nob/c → non_business
+- lump_sum_payment:
+  - not_lpsm → no
+  - lpsm → yes
+
+- occupancy_type:
+  - pr → primary residence
+  - sr → secondary residence
+
+- credit_type:
+  - cib → cibil
+  - exp → experian
+  - crif → crif
+  - equi → equifax
 
 ---
 
-##  Step 2: Outlier Handling
-- Applied IQR method on key numerical columns:
-  - loan_amount
+## Step 2: Outlier Handling
+- Applied IQR method on selected numerical columns:
   - income
   - credit_score
   - ltv
-- Removed extreme values to improve data quality
+
+- Note:
+  - `loan_amount` was intentionally NOT modified to preserve its distribution for analysis and visualization purposes.
 
 ---
 
 ##  Step 3: Feature Engineering
-Created new features to enhance analysis:
+Created new features to enhance analytical insights:
 
 - income_to_loan_ratio:
-  - Measures financial strength
+  - Measures financial strength of applicant
 
 - emi_estimate:
-  - Approximate loan repayment per term
+  - Estimated monthly loan repayment
 
 - emi_income_ratio:
-  - Measures affordability
+  - Measures affordability of loan repayment
+
+- Additional Handling:
+  - Managed division errors (infinite values)
+  - Replaced invalid values with 0 to maintain dataset consistency
 
 ---
 
-##  Step 4: Final Validation
-- Checked:
+## Step 4: Final Validation
+- Verified:
   - Data types
-  - Null values
+  - Missing values
   - Dataset shape
-- Ensured dataset consistency and readiness
+- Ensured dataset is clean, consistent, and analysis-ready
 
 ---
 
@@ -71,8 +109,8 @@ Created new features to enhance analysis:
 
 ##  Summary
 This notebook focused on:
-- Transforming encoded data into meaningful categories
-- Handling outliers
-- Creating new analytical features
+- Converting encoded categorical values into meaningful business-friendly labels
+- Selective outlier handling on critical numerical features
+- Creating new financial ratio features for deeper insights
 
-The dataset is now fully prepared for visualization and analysis.
+The dataset is now fully prepared for data visualization and analysis.
