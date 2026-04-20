@@ -11,7 +11,10 @@ Converted encoded categorical values into meaningful real-world labels for bette
 - loan_limit:
   - cf → conforming loan
   - ncf → non-conforming loan
-
+  
+- gender:
+  - sex not available → NA
+ 
 - approv_in_adv:
   - nopre → no pre-approval
   - pre → pre-approved
@@ -54,6 +57,7 @@ Converted encoded categorical values into meaningful real-world labels for bette
 - occupancy_type:
   - pr → primary residence
   - sr → secondary residence
+  - ir → investment residence
 
 - credit_type:
   - cib → cibil
